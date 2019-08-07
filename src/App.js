@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { createStore, combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
 
-import logo from './logo.svg';
 import './App.css';
+
+import ContactForm from './ContactForm'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -16,27 +15,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const rootReducer = combineReducers({
-  // ...your other reducers here
-  // you have to pass formReducer under 'form' key,
-  // for custom keys look up the docs for 'getFormState'
-  form: formReducer
-})
-
-const store = createStore(rootReducer)
-
 function App() {
   const classes = useStyles();
+
+  const submit = values => {
+    // print the form values to the console
+    console.log(values)
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and Test to reload.
-        </p>
+        <ContactForm onSubmit={submit} />        
         <Button variant="contained" color="primary" href="#contained-buttons" className={classes.button}>
           Link
-      </Button>
+        </Button>
         <input
           accept="image/*"
           className={classes.input}
@@ -49,14 +42,6 @@ function App() {
             Upload
         </Button>
         </label>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
