@@ -1,8 +1,20 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-let ContactForm = props => {
-  const { handleSubmit } = props
+const useStyles = makeStyles(theme => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+    input: {
+      display: 'none',
+    },
+}));
+
+let ContactForm = ({ handleSubmit }) => {
+  const classes = useStyles();
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -17,7 +29,9 @@ let ContactForm = props => {
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
-      <button type="submit">Submit</button>
+      <Button type="submit" variant="contained" color="primary" href="#contained-buttons" className={classes.button}>
+				Link
+      </Button>
     </form>
   )
 }
