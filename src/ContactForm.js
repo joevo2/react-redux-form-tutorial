@@ -29,8 +29,8 @@ let ContactForm = ({ handleSubmit }) => {
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
-      <Button type="submit" variant="contained" color="primary" href="#contained-buttons" className={classes.button}>
-				Link
+      <Button type="submit" variant="contained" color="primary" className={classes.button}>
+				Submit
       </Button>
     </form>
   )
